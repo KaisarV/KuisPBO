@@ -1,6 +1,7 @@
 package View;
 
 
+import Model.User;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -53,8 +54,8 @@ public class MainMenuScreen {
         
         registrasi.addActionListener((ActionEvent e) -> {
             f.dispose();
-           
-            new RegisMenuScreen();
+            User u = null;
+            new RegisMenuScreen(u);
         });
         
         login.addActionListener((ActionEvent e) -> {
@@ -62,4 +63,5 @@ public class MainMenuScreen {
             new LoginMenuScreen();
         });
     }
+    
 }

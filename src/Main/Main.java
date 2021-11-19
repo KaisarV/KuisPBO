@@ -1,20 +1,21 @@
-
 package Main;
 
-import Controller.Controller;
-import View.MainMenuScreen;
+//import Controller.Controller;
+import Model.User;
+import View.HasilCariPengguna;
+import View.LoginMenuScreen;
+
 
 /**
  *
  * @author MrKaisar
  */
 public class Main {
-    
+
     public static void main(String[] args) {
-        new MainMenuScreen();
-        Controller p = new Controller();
-        
-       
+
+        new LoginMenuScreen();
+
     }
-    
+
 }

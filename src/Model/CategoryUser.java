@@ -1,11 +1,7 @@
 
 package Model;
 
-import Database.Database;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -24,28 +20,6 @@ public class CategoryUser {
     public CategoryUser() {
     }
     
-    static Database conn = new Database();
-    
-    public ArrayList<CategoryUser> getAllCategory() {
-        conn.connect();
-        ArrayList<CategoryUser> categories = new ArrayList<>();
-        String query = "SELECT * FROM categoryuser";
-        try {
-            Statement stmt = conn.con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                CategoryUser category = new CategoryUser();
-                category.setId(rs.getInt("id"));
-                category.setName(rs.getString("name"));
-                
-                categories.add(category);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return categories;
-    }
-
     public int getId() {
         return id;
     }

@@ -1,11 +1,5 @@
 package Model;
 
-import Database.Database;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 /**
  *
@@ -31,48 +25,6 @@ public class User {
         
     }
     
-    static Database conn = new Database();
-    
-    public ArrayList<User> getAllUsers() {
-        conn.connect();
-        ArrayList<User> users = new ArrayList<>();
-        String query = "SELECT * FROM user";
-        try {
-            Statement stmt = conn.con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setName(rs.getString("name"));
-                user.setEmail(rs.getString("email"));
-                user.setPassword(rs.getString("password"));
-                user.setIdCategory(rs.getInt("idcategory"));
-                users.add(user);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return (users);
-    }
-    public boolean insertDataUser(User u) {
-        conn.connect();
-        String query = "INSERT INTO user VALUES(?,?,?,?,?)";
-        try {
-            PreparedStatement stmt = conn.con.prepareStatement(query);
-            stmt.setInt(1, u.getId());
-            stmt.setString(2, u.getName());
-            stmt.setString(3, u.getEmail());
-            stmt.setString(4, u.getPassword());
-            stmt.setInt(5, u.getIdCategory());
-            stmt.executeUpdate();
-            return (true);
-        } catch (SQLException e) {
-           
-            e.printStackTrace();
-            return (false);
-        }
-    }
-
     public int getId() {
         return id;
     }
